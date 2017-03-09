@@ -1,4 +1,4 @@
-package prometeus.week2.practice1.addtask;
+package week2.practice1.addtask;
 
 public class Node {
     public int key;

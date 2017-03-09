@@ -1,4 +1,4 @@
-package prometeus.week2.practice1;
+package week2.practice1;
 
 public class BinarySearch {
     public static void main(String[] args) {
