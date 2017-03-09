@@ -11,7 +11,7 @@ public class BinaryTree {
         return findNode(this.root, key);
     }
 
-    private boolean findNode(Node node, int key){
+    private boolean findNode(Node node, int key){// нужно что-то поменять не работает
         if (node == null){
             return false;
         } else if (key == node.key){
