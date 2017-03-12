@@ -5,13 +5,13 @@ public class TestBinaryTree {
 
         BinaryTree tree = new BinaryTree();
         tree.add(1);
-        tree.add(31);
-        tree.add(2);
-        tree.add(5);
+        tree.add(1);
+        tree.add(1);
+        tree.add(1);
         tree.add(0);
         tree.add(-10);
         tree.add(-2);
 
-        System.out.println(tree.find(31));
+        System.out.println(tree.find(1));
     }
 }
