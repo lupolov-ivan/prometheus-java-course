@@ -7,11 +7,8 @@ public class BinaryTree {
         this.root = null;
     }
 
-    public boolean find(int key){
-        if (findNode(this.root, key) == null) {
-            return false;
-        }
-        return true;
+    public Node find(int key){
+        return findNode(this.root, key);
     }
 
     private Node findNode(Node node, int key){
