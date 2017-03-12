@@ -12,6 +12,6 @@ public class TestBinaryTree {
         tree.add(-10);
         tree.add(-2);
 
-        System.out.println(tree.find(2));
+        System.out.println(tree.find(5));
     }
 }

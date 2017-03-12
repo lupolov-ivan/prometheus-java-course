@@ -8,24 +8,23 @@ public class BinaryTree {
     }
 
     public boolean find(int key){
-        return findNode(this.root, key);
-    }
-
-    private boolean findNode(Node node, int key){// нужно что-то поменять не работает
-        if (node == null){
+        if (findNode(this.root, key) == null) {
             return false;
-        } else if (key == node.key){
-            return true;
-        } else if (key > node.key){
-            findNode(node.right, key);
-        } else if (key < node.key){
-            findNode(node.left, key);
         }
-        return false;
+        return true;
     }
 
-    public boolean remove(int key) {
-        return false;
+    private Node findNode(Node node, int key){
+        if (node == null){
+            return null;
+        } else if (key == node.key){
+            return node;
+        } else if (key > node.key){
+            node = findNode(node.right, key);
+        } else if (key < node.key){
+            node = findNode(node.left, key);
+        }
+        return node;
     }
 
     public void add(int key){
