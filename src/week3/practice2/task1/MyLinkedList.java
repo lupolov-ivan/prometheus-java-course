@@ -2,8 +2,6 @@ package src.week3.practice2.task1;
 
 public class MyLinkedList {
 
-    public int size;
-
     public Node head;
     public Node tail;
 
@@ -12,6 +10,7 @@ public class MyLinkedList {
     }
 
     public void add(Integer data) { // добавление в конец списка
+
         Node n = new Node(data);
 
         if (tail == null) {
@@ -24,7 +23,20 @@ public class MyLinkedList {
     }
 
     public Integer get(int index) {
-        return index;
+        int i = 0;
+        if (head != null) {
+            if (index == 0) {
+                return head.getData();
+            }
+            while (head.getNext() != null) {
+                head = head.getNext();
+                i++;
+                if (index == i) {
+                    return head.getData();
+                }
+            }
+        }
+        return null;
     }
 
     public boolean delete(int index) {
