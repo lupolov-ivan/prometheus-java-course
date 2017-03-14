@@ -25,4 +25,12 @@ public class Node {
     public void setData(Integer data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "next=" + next +
+                ", data=" + data +
+                '}';
+    }
 }

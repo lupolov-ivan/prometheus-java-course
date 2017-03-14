@@ -2,8 +2,8 @@ package src.week3.practice2.task1;
 
 public class MyLinkedList {
 
-    public Node head;
-    public Node tail;
+    private Node head;
+    private int size = 0;
 
     public MyLinkedList() {
 
@@ -13,27 +13,28 @@ public class MyLinkedList {
 
         Node n = new Node(data);
 
-        if (tail == null) {
+        if (head == null) {
             head = n;
-            tail = n;
+            size++;
         } else {
-            tail.setNext(n);
-            tail = n;
+            head.setNext(n);
+            head = n;
+            size++;
         }
     }
 
     public Integer get(int index) {
-        int i = 0;
-        if (head != null) {
-            if (index == 0) {
+        if((index >= size)||(size == 0)){
+            throw new IndexOutOfBoundsException();
+        }
+        if(index == 0) {
+            return head.getData();
+        }
+
+        for (int i = 1; i < size; i++) {
+            head = head.getNext();
+            if(i == index) {
                 return head.getData();
-            }
-            while (head.getNext() != null) {
-                head = head.getNext();
-                i++;
-                if (index == i) {
-                    return head.getData();
-                }
             }
         }
         return null;
@@ -44,16 +45,10 @@ public class MyLinkedList {
     }
 
     public int size() {
-        int count = 0;
-        if (head != null) {
-            count++;
-            while (head.getNext() != null) {
-                count++;
-                head = head.getNext();
-            }
-        } else {
-            return 0;
-        }
-        return count;
+        return size;
+    }
+
+    public Node test() {
+        return head;
     }
 }

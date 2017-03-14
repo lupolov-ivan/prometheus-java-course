@@ -8,6 +8,6 @@ public class TestMyLinkedList {
         list.add(3);
         list.add(4);
 
-        System.out.println(list.get(0));
+        System.out.println(list.get(1));
     }
 }
