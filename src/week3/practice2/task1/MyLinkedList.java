@@ -40,7 +40,27 @@ public class MyLinkedList {
     }
 
     public boolean delete(int index) {
-        return false;
+        Node tmp = null;
+        Node h = head;
+        if((index >= size)||(size == 0)||(index < 0)){
+            return false;
+        }
+        if(index == 0) {        // случай если удаляемый элемент первый
+            tmp = h.getNext();
+            h = tmp.getNext();
+            head.setNext(h);
+            head = tmp;
+            size--;
+            return true;
+        }
+        for (int i = 0; i < index - 1; i++) { // находим узел идущий перед удаляемым
+            tmp = h.getNext();
+            h = tmp;
+        }
+        tmp = h.getNext().getNext(); // получаем узел следующий после удалеяемого
+        h.setNext(tmp);              // присваеваем его ссылке на следующий узел узла идущего перед удаляемым
+        size--;
+        return true;
     }
 
     public int size() {
