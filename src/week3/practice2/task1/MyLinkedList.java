@@ -3,6 +3,7 @@ package src.week3.practice2.task1;
 public class MyLinkedList {
 
     private Node head;
+    private Node tail;
     private int size = 0;
 
     public MyLinkedList() {
@@ -15,29 +16,27 @@ public class MyLinkedList {
 
         if (head == null) {
             head = n;
+            tail = n;
             size++;
         } else {
-            head.setNext(n);
-            head = n;
+            tail.setNext(n);
+            tail = n;
             size++;
         }
     }
 
     public Integer get(int index) {
-        if((index >= size)||(size == 0)){
-            throw new IndexOutOfBoundsException();
-        }
-        if(index == 0) {
-            return head.getData();
-        }
+        Node tmp = null;
+        Node h = head;
 
-        for (int i = 1; i < size; i++) {
-            head = head.getNext();
-            if(i == index) {
-                return head.getData();
-            }
+        if((index >= size)||(size == 0)||(index < 0)){
+            return null;
         }
-        return null;
+        for (int i = 0; i < index; i++) {
+            tmp = h.getNext();
+            h = tmp;
+        }
+        return h.getData();
     }
 
     public boolean delete(int index) {
