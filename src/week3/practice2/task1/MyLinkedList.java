@@ -12,8 +12,8 @@ public class MyLinkedList {
 
     public void add(Integer data) { // добавление в конец списка
 
-        Node n = new Node(data);
-
+        Node n = new Node();
+        n.setData(data);
         if (head == null) {
             head = n;
             tail = n;
@@ -46,6 +46,12 @@ public class MyLinkedList {
             return false;
         }
         if(index == 0) {        // случай если удаляемый элемент первый
+            if(size == 1) {     // случай если елемент единственный
+                head = null;
+                tail = null;
+                size--;
+                return true;
+            }
             tmp = h.getNext();
             h = tmp.getNext();
             head.setNext(h);
@@ -65,9 +71,5 @@ public class MyLinkedList {
 
     public int size() {
         return size;
-    }
-
-    public Node test() {
-        return head;
     }
 }
