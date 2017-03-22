@@ -2,37 +2,37 @@ package src.week3.practice2.task2;
 
 import java.util.Random;
 
-public class Desk {
+public class Deck {
 
-    Card[] rusDesk = new Card[36];
-    public int sizeDesk;
+    Card[] rusDeck = new Card[36];
+    public int sizeDeck;
 
-    public Desk(){
+    public Deck(){
         for (int i = 0; i < Suit.values.length; i++) {
             for (int j = 0; j < Rank.values.length; j++) {
-                rusDesk[sizeDesk] = new Card(Rank.values[j],Suit.values[i]);
-                sizeDesk++;
+                rusDeck[sizeDeck] = new Card(Rank.values[j],Suit.values[i]);
+                sizeDeck++;
             }
         }
     }
 
     public void shuffle() {
         Random rnd = new Random();
-        for (int i = rusDesk.length - 1; i > 0; i--) {
+        for (int i = rusDeck.length - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
-            Card crd = rusDesk[index];
-            rusDesk[index] = rusDesk[i];
-            rusDesk[i] = crd;
+            Card crd = rusDeck[index];
+            rusDeck[index] = rusDeck[i];
+            rusDeck[i] = crd;
         }
     }
 
     public void order() {
-        for (int i = 0; i < sizeDesk; i++) {
-            for (int j = 0; j < sizeDesk - 1; j++) {
-                if (compareCard(rusDesk[j],rusDesk[j + 1]) < 0) {
-                    Card tmp = rusDesk[j];
-                    rusDesk[j] = rusDesk[j + 1];
-                    rusDesk[j + 1] = tmp;
+        for (int i = 0; i < sizeDeck; i++) {
+            for (int j = 0; j < sizeDeck - 1; j++) {
+                if (compareCard(rusDeck[j], rusDeck[j + 1]) < 0) {
+                    Card tmp = rusDeck[j];
+                    rusDeck[j] = rusDeck[j + 1];
+                    rusDeck[j + 1] = tmp;
                 }
             }
         }
@@ -82,14 +82,18 @@ public class Desk {
     }
 
     public boolean hasNext() {
-        if(sizeDesk != 0) {
+        if(sizeDeck != 0) {
             return true;
         }
         return false;
     }
 
     public Card drawOne() {
-
-        return null;
+        if (sizeDeck == 0) {
+            return null;
+        }
+        Card currentCard = rusDeck[sizeDeck -1];
+        sizeDeck--;
+        return currentCard;
     }
 }

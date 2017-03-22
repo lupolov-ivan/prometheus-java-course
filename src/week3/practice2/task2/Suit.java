@@ -17,4 +17,11 @@ public class Suit {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "Suit{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
