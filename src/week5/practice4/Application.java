@@ -20,26 +20,25 @@ public class Application {
             } else {
                 return null;
             }
-        } else if (args.length > 1) {
+        } else if (args.length == 2) {
             if (args[0] == null) {
                 return null;
             } if (args[0].equals("")) {
                 return null;
-            } else if (args[0].equals("date") && args.length == 2) {
+            } else if (args[0].equals("date")) {
                 if(args[1] == null) {
                     return null;
+                } else if(args[1].equals("")) {
+                   return null;
                 } else if (args[1].equals("now")) {
                     return new DateNowCommand();
                 }
             } else if (args[0].equals("echo")) {
-                String text = "";
-                for (int i = 1; i < args.length; i++) {
-                    if(args[i] == null) {
-                        return null;
-                    }
-                    text += args[i] + " ";
+                if(args[1] == null) {
+                    return null;
+                } else {
+                    return new EchoCommand(args[1]);
                 }
-                return new EchoCommand(text);
             } else {
                 return null;
             }
@@ -58,6 +57,8 @@ public class Application {
     }
 
     public static void main(String[] args) {
+
+
 
         Application app = new Application();
 
