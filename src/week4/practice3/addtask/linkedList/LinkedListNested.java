@@ -1,25 +1,30 @@
-package src.week3.practice2.task1;
+package src.week4.practice3.addtask.linkedList;
 
-public class MyLinkedList {
+public class LinkedListNested {
+
+    class Node {
+        private Node next;
+        private Integer data;
+    }
 
     private Node head;
     private Node tail;
     private int size = 0;
 
-    public MyLinkedList() {
+    public LinkedListNested() {
 
     }
 
     public void add(Integer data) { // добавление в конец списка
 
         Node n = new Node();
-        n.setData(data);
+        n.data = data;
         if (head == null) {
             head = n;
             tail = n;
             size++;
         } else {
-            tail.setNext(n);
+            tail.next = n;
             tail = n;
             size++;
         }
@@ -33,10 +38,10 @@ public class MyLinkedList {
             return null;
         }
         for (int i = 0; i < index; i++) {
-            tmp = h.getNext();
+            tmp = h.next;
             h = tmp;
         }
-        return h.getData();
+        return h.data;
     }
 
     public boolean delete(int index) {
@@ -45,26 +50,26 @@ public class MyLinkedList {
         if((index >= size)||(size == 0)||(index < 0)){
             return false;
         }
-        if(index == 0) {        // случай если удаляемый элемент первый
-            if(size == 1) {     // случай если елемент единственный
+        if(index == 0) {        // случай если удаляемый элемент первый...
+            if(size == 1) {     // случай если елемент единственный...
                 head = null;
                 tail = null;
                 size--;
                 return true;
             }
-            tmp = h.getNext();
-            h = tmp.getNext();
-            head.setNext(h);
+            tmp = h.next;
+            h = tmp.next;
+            head.next = h;
             head = tmp;
             size--;
             return true;
         }
         for (int i = 0; i < index - 1; i++) { // находим узел идущий перед удаляемым
-            tmp = h.getNext();
+            tmp = h.next;
             h = tmp;
         }
-        tmp = h.getNext().getNext(); // получаем узел следующий после удалеяемого
-        h.setNext(tmp);              // присваеваем его ссылке на следующий узел узла идущего перед удаляемым
+        tmp = h.next.next; // получаем узел следующий после удалеяемого
+        h.next = tmp;              // присваеваем его ссылке на следующий узел узла идущего перед удаляемым
         size--;
         return true;
     }
